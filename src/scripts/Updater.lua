@@ -54,7 +54,9 @@ function __PKGNAME__:AutoMupdate(handle)
         local updater = Mupdate:new({
             download_path = "https://github.com/gesslar/__PKGNAME__/releases/latest/download/",
             package_name = "__PKGNAME__",
-            remote_version_file = "version.txt",
+            remote_version_file = "__PKGNAME___version.txt",
+            param_key = "response-content-disposition",
+            param_regex = "attachment; filename=(.*)",
             debug_mode = true,
         })
         updater:Start(function()
