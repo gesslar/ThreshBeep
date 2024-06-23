@@ -27,8 +27,8 @@ jobs:
       - name: "create version file"
         id: create_version_file
         run: |
-          echo "filename=${{ env.mfile_package }}_${{ env.mfile_version }}.txt" >> $GITHUB_ENV
-          echo "${{ env.mfile_version }}" > "${{ env.mfile_package }}_${{ env.mfile_version }}.txt"
+          echo "filename=${{ env.mfile_package }}_version.txt" >> $GITHUB_ENV
+          echo "${{ env.mfile_version }}" > "${{ env.mfile_package }}_version.txt"
 
       - name: Build With Muddler
         # You may pin to the exact commit or the version.
