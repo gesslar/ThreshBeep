@@ -24,19 +24,16 @@ jobs:
           # The prefix for variables.
           prefix: "mfile"
 
-      - name: "create version.txt"
-        uses: 1arp/create-a-file-action@0.4.5
-        # see https://github.com/marketplace/actions/create-a-file
-        with:
-          path: './'
-          isAbsolutePath: false
-          file: 'version.txt'
-          content: ${{ env.mfile_version }}
+      - name: "create version file"
+        id: create_version_file
+        run: |
+          echo "filename=${{ env.mfile_package }}_${{ env.mfile_version }}.txt" >> $GITHUB_ENV
+          echo "${{ env.mfile_version }}" > ${{ env.filename }}
 
       - name: Build With Muddler
         # You may pin to the exact commit or the version.
         # uses: demonnic/build-with-muddler@a9355b3c4f93553287e0f2d4087508b9f6164225
-        uses: demonnic/build-with-muddler@v1.4
+        uses: demonnic/build-with-muddler@main
         with:
           # Version of muddler to use
           muddlerVersion: LATEST # optional, default is LATEST
@@ -46,7 +43,7 @@ jobs:
       - uses: ncipollo/release-action@v1
         # see https://github.com/marketplace/actions/create-release
         with:
-          artifacts: "build/${{env.mfile_package}}.mpackage,version.txt"
+          artifacts: "build/${{ env.mfile_package }}.mpackage,${{ env.filename }}"
           allowUpdates: true
           bodyFile: "./README.md"
           tag: ${{ env.mfile_version }}
