@@ -50,8 +50,8 @@ function __PKGNAME__:AutoMupdate(handle)
     registerNamedTimer(self.MupdateUser, self.MupdateUser, 2, function()
         deleteAllNamedTimers(self.MupdateUser)
 
-        local Mupdate = require("__PKGNAME__\\Mupdate")
-        local updater = Mupdate:new({
+        local __PKGNAME__Mupdate = require("__PKGNAME__\\Mupdate")
+        local updater = __PKGNAME__Mupdate:new({
             download_path = "https://github.com/gesslar/__PKGNAME__/releases/latest/download/",
             package_name = "__PKGNAME__",
             remote_version_file = "__PKGNAME___version.txt",
@@ -59,10 +59,7 @@ function __PKGNAME__:AutoMupdate(handle)
             param_regex = "attachment; filename=(.*)",
             debug_mode = true,
         })
-        updater:Start(function()
-            updater:Cleanup()
-            updater = nil
-        end)
+        updater:Start()
     end)
 end
 
