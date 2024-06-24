@@ -2,7 +2,7 @@
   "package": "ThreshBeep",
   "title": "Make a sound when the beep is made!",
   "description": "Make a sound when the beep is made!",
-  "version": "1.0.28",
+  "version": "1.1.0",
   "author": "Gesslar@ThresholdRPG",
   "icon": "griffon-right.jpg",
   "dependencies": "",
