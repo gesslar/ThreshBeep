@@ -8,7 +8,7 @@ function __PKGNAME__:AutoMupdate(handle)
   if handle ~= self.MupdateUser then return end
 
     local timerName = "__PKGNAME__.AutoMupdate"
-    local timers = getNamedTimers(self.MupdateUser)
+    local timers = getNamedTimers(self.MupdateUser) or {}
 
     for _, timer in ipairs(timers) do
         if timer.name == timerName then return end
