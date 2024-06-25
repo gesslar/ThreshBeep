@@ -1,6 +1,6 @@
 --[[
 
-This is the auto-updater for for this package. It uses downloads the latest
+This is the auto-updater for this package. It uses downloads the latest
 version of Mupdate and then uses it to download the latest version of the
 package, uninstalls the old version, and installs the new version.
 
@@ -92,6 +92,15 @@ function __PKGNAME__.Mupdate:RegisterMupdateEventHandlers()
             end
         )
     end
+end
+
+function __PKGNAME__.update()
+    local mupdate = require("__PKGNAME__.Mupdate")
+
+    cecho(f"<chocolate>[[ __PKGNAME__ ]]<reset> Initiating manual update.\n")
+    cecho(f"<chocolate>[[ __PKGNAME__ ]]<reset> Full logging of update activity may be found in <u>Scripts</u> > <u>Errors</u>\n")
+
+    __PKGNAME__.Mupdate:downloadLatestMupdate()
 end
 
 function __PKGNAME__.Mupdate:UnregisterMupdateEventHandlers()
