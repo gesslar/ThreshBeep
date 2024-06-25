@@ -121,10 +121,9 @@ function __PKGNAME__.Mupdate:downloadLatestMupdate()
 end
 
 -- Start it up
-__PKGNAME__.Mupdate.MupdateLoadHandler = __PKGNAME__.MupdateLoadHandler or
-    registerNamedEventHandler(
-        __PKGNAME__.Mupdate.tag, -- username
-        __PKGNAME__.Mupdate.tag..".Load", -- handler name
-        "sysLoadEvent", -- event name
-        function(event) __PKGNAME__.Mupdate:downloadLatestMupdate() end
-    )
+registerNamedEventHandler(
+    __PKGNAME__.Mupdate.tag, -- username
+    __PKGNAME__.Mupdate.tag..".Load", -- handler name
+    "sysLoadEvent", -- event name
+    function(event) __PKGNAME__.Mupdate:downloadLatestMupdate() end
+)
