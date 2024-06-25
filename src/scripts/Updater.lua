@@ -8,6 +8,19 @@ If this script has __PKGNAME__ in the name, it will be automatically translated
 to the package name when run through muddler. Else, you will have to do
 a search/replace for your package name.
 
+This script should be able to be dropped in as-is, but you will need to
+customize the settings for Mupdate to work properly.
+
+The Customizable settings are:
+    mupdate_url: The URL to download the latest version of Mupdate
+    payload: A table of settings for Mupdate
+        download_path: The URL to download the latest version of the package
+        package_name: The name of the package
+        remote_version_file: The name of the file that contains the version
+        param_key: (optional) The key to look for in the headers
+        param_regex: (optional) The regex to use to extract the filename from the headers
+        debug_mode: (optional) Whether to print debug messages
+
 Written by Gesslar@ThresholdRPG 2024-06-24
 
 ]]--
