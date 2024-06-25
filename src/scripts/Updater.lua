@@ -94,23 +94,20 @@ function __PKGNAME__.Mupdate:RegisterMupdateEventHandlers()
     end
 end
 
-function __PKGNAME__.update()
-    local mupdate = require("__PKGNAME__.Mupdate")
-
-    cecho(f"<chocolate>[[ __PKGNAME__ ]]<reset> Initiating manual update.\n")
-    cecho(f"<chocolate>[[ __PKGNAME__ ]]<reset> Full logging of update activity may be found in <u>Scripts</u> > <u>Errors</u>\n")
-
-    __PKGNAME__.Mupdate:downloadLatestMupdate()
-end
-
 function __PKGNAME__.Mupdate:UnregisterMupdateEventHandlers()
     local existingHandlers = getNamedEventHandlers(self.tag) or {}
     for _, label in pairs(self.handler_events) do
         local result = deleteNamedEventHandler(self.tag, label)
-        if not result then
-            display("Failed to unregister: " .. label)
-        end
     end
+end
+
+function __PKGNAME__.update()
+    local version = getPackageInfo("__PKGNAME__", "version")
+    cecho(f"<chocolate>[[ __PKGNAME__ ]]<reset> Initiating manual update to currently installed version "..version..".\n")
+    cecho(f"<chocolate>[[ __PKGNAME__ ]]<reset> If there is a new version, it will be downloaded and installed.\n")
+    cecho(f"<chocolate>[[ __PKGNAME__ ]]<reset> Full logging of update activity may be found in <u>Scripts</u> > <u>Errors</u>\n")
+
+    __PKGNAME__.Mupdate:downloadLatestMupdate()
 end
 
 function __PKGNAME__.Mupdate:downloadLatestMupdate()
