@@ -1,7 +1,6 @@
--- Beep file downloaded from
--- https://freesound.org/people/tim.kahn/sounds/91926/
-
-local ThresholdBeepFile = getMudletHomeDir() .. "/ThresholdBeep/Media/Sounds/91926__tim-kahn__ding.wav"
+local dir = getMudletHomeDir() .. "/__PKGNAME__/"
+local ThresholdBeepFile = dir .. "Media/Sounds/91926__tim-kahn__ding.wav"
+print(ThresholdBeepFile)
 playSoundFile(ThresholdBeepFile)
 
 for _, match in pairs(matches) do
