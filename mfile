@@ -1,10 +1,10 @@
 {
-  "package": "ThreshBeep",
+  "package": "Beeper",
   "title": "Make a sound when the beep is made!",
   "description": "Make a sound when the beep is made!",
-  "version": "1.7.0",
-  "author": "Gesslar@ThresholdRPG",
-  "icon": "griffon-right.jpg",
+  "version": "2.0.0",
+  "author": "gesslar",
+  "icon": "bell.png",
   "dependencies": "",
   "outputFile": true
 }
